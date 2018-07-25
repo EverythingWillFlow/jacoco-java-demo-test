@@ -1,0 +1,495 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generated="20180725 15:12:14.253" generator="Robot 3.0.4 (Python 2.7.5 on linux2)">
+<suite source="/home/auto/project/jacoco-java-demo-test/TestCases" id="s1" name="TestCases">
+<suite source="/home/auto/project/jacoco-java-demo-test/TestCases/01_新增用户.robot" id="s1-s1" name="01 新增用户">
+<test id="s1-s1-t1" name="001_请求不带用户名或密码_添加失败">
+<kw name="Create Session" library="RequestsLibrary">
+<doc>Create Session: create a HTTP session to a server</doc>
+<arguments>
+<arg>API</arg>
+<arg>${URL}</arg>
+</arguments>
+<msg timestamp="20180725 15:12:14.372" level="INFO">Creating Session using : alias=API, url=http://10.148.138.140:8080, headers={},                     cookies=None, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" endtime="20180725 15:12:14.373" starttime="20180725 15:12:14.371"></status>
+</kw>
+<kw name="Get Request" library="RequestsLibrary">
+<doc>Send a GET request on the session object found using the</doc>
+<arguments>
+<arg>API</arg>
+<arg>${URI}</arg>
+<arg>params=opertype=add</arg>
+</arguments>
+<assign>
+<var>${response}</var>
+</assign>
+<msg timestamp="20180725 15:12:14.382" level="INFO">Get Request using : alias=API, uri=/jacocotest/userServlet, headers=None json=None</msg>
+<msg timestamp="20180725 15:12:14.383" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" endtime="20180725 15:12:14.383" starttime="20180725 15:12:14.373"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${response.text}</arg>
+<arg>username or password is null</arg>
+</arguments>
+<status status="PASS" endtime="20180725 15:12:14.384" starttime="20180725 15:12:14.383"></status>
+</kw>
+<status status="PASS" endtime="20180725 15:12:14.385" critical="yes" starttime="20180725 15:12:14.369"></status>
+</test>
+<test id="s1-s1-t2" name="002_用户名密码正常_添加成功">
+<kw name="Create Session" library="RequestsLibrary">
+<doc>Create Session: create a HTTP session to a server</doc>
+<arguments>
+<arg>API</arg>
+<arg>${URL}</arg>
+</arguments>
+<msg timestamp="20180725 15:12:14.389" level="INFO">Creating Session using : alias=API, url=http://10.148.138.140:8080, headers={},                     cookies=None, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" endtime="20180725 15:12:14.390" starttime="20180725 15:12:14.388"></status>
+</kw>
+<kw name="Get Request" library="RequestsLibrary">
+<doc>Send a GET request on the session object found using the</doc>
+<arguments>
+<arg>API</arg>
+<arg>${URI}</arg>
+<arg>params=opertype=del</arg>
+</arguments>
+<assign>
+<var>${response}</var>
+</assign>
+<msg timestamp="20180725 15:12:14.394" level="INFO">Get Request using : alias=API, uri=/jacocotest/userServlet, headers=None json=None</msg>
+<msg timestamp="20180725 15:12:14.395" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" endtime="20180725 15:12:14.395" starttime="20180725 15:12:14.390"></status>
+</kw>
+<kw name="Get Request" library="RequestsLibrary">
+<doc>Send a GET request on the session object found using the</doc>
+<arguments>
+<arg>API</arg>
+<arg>${URI}</arg>
+<arg>params=opertype=add&amp;username=tom&amp;password=123</arg>
+</arguments>
+<assign>
+<var>${response}</var>
+</assign>
+<msg timestamp="20180725 15:12:14.401" level="INFO">Get Request using : alias=API, uri=/jacocotest/userServlet, headers=None json=None</msg>
+<msg timestamp="20180725 15:12:14.401" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" endtime="20180725 15:12:14.401" starttime="20180725 15:12:14.395"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${response.text}</arg>
+<arg>add success</arg>
+</arguments>
+<status status="PASS" endtime="20180725 15:12:14.402" starttime="20180725 15:12:14.401"></status>
+</kw>
+<status status="PASS" endtime="20180725 15:12:14.403" critical="yes" starttime="20180725 15:12:14.385"></status>
+</test>
+<test id="s1-s1-t3" name="003_用户重复_添加失败">
+<kw name="Create Session" library="RequestsLibrary">
+<doc>Create Session: create a HTTP session to a server</doc>
+<arguments>
+<arg>API</arg>
+<arg>${URL}</arg>
+</arguments>
+<msg timestamp="20180725 15:12:14.406" level="INFO">Creating Session using : alias=API, url=http://10.148.138.140:8080, headers={},                     cookies=None, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" endtime="20180725 15:12:14.407" starttime="20180725 15:12:14.405"></status>
+</kw>
+<kw name="Get Request" library="RequestsLibrary">
+<doc>Send a GET request on the session object found using the</doc>
+<arguments>
+<arg>API</arg>
+<arg>${URI}</arg>
+<arg>params=opertype=add&amp;username=tom&amp;password=123</arg>
+</arguments>
+<assign>
+<var>${response}</var>
+</assign>
+<msg timestamp="20180725 15:12:14.413" level="INFO">Get Request using : alias=API, uri=/jacocotest/userServlet, headers=None json=None</msg>
+<msg timestamp="20180725 15:12:14.413" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" endtime="20180725 15:12:14.413" starttime="20180725 15:12:14.408"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${response.text}</arg>
+<arg>user exists, add failed</arg>
+</arguments>
+<status status="PASS" endtime="20180725 15:12:14.415" starttime="20180725 15:12:14.414"></status>
+</kw>
+<status status="PASS" endtime="20180725 15:12:14.415" critical="yes" starttime="20180725 15:12:14.403"></status>
+</test>
+<status status="PASS" endtime="20180725 15:12:14.416" starttime="20180725 15:12:14.287"></status>
+</suite>
+<suite source="/home/auto/project/jacoco-java-demo-test/TestCases/02_查询用户.robot" id="s1-s2" name="02 查询用户">
+<test id="s1-s2-t1" name="001_查询用户成功">
+<kw name="Create Session" library="RequestsLibrary">
+<doc>Create Session: create a HTTP session to a server</doc>
+<arguments>
+<arg>API</arg>
+<arg>${URL}</arg>
+</arguments>
+<msg timestamp="20180725 15:12:14.427" level="INFO">Creating Session using : alias=API, url=http://10.148.138.140:8080, headers={},                     cookies=None, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" endtime="20180725 15:12:14.427" starttime="20180725 15:12:14.426"></status>
+</kw>
+<kw name="Get Request" library="RequestsLibrary">
+<doc>Send a GET request on the session object found using the</doc>
+<arguments>
+<arg>API</arg>
+<arg>${URI}</arg>
+<arg>params=opertype=query</arg>
+</arguments>
+<assign>
+<var>${response}</var>
+</assign>
+<msg timestamp="20180725 15:12:14.432" level="INFO">Get Request using : alias=API, uri=/jacocotest/userServlet, headers=None json=None</msg>
+<msg timestamp="20180725 15:12:14.433" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" endtime="20180725 15:12:14.433" starttime="20180725 15:12:14.428"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${response.text}</arg>
+</arguments>
+<msg timestamp="20180725 15:12:14.434" level="INFO">[tom]
+query success
+</msg>
+<status status="PASS" endtime="20180725 15:12:14.434" starttime="20180725 15:12:14.433"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${response.text}</arg>
+<arg>query success</arg>
+</arguments>
+<status status="PASS" endtime="20180725 15:12:14.435" starttime="20180725 15:12:14.435"></status>
+</kw>
+<status status="PASS" endtime="20180725 15:12:14.436" critical="yes" starttime="20180725 15:12:14.424"></status>
+</test>
+<test id="s1-s2-t2" name="002_请求不带opertype_查询失败">
+<kw name="Create Session" library="RequestsLibrary">
+<doc>Create Session: create a HTTP session to a server</doc>
+<arguments>
+<arg>API</arg>
+<arg>${URL}</arg>
+</arguments>
+<msg timestamp="20180725 15:12:14.439" level="INFO">Creating Session using : alias=API, url=http://10.148.138.140:8080, headers={},                     cookies=None, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" endtime="20180725 15:12:14.440" starttime="20180725 15:12:14.438"></status>
+</kw>
+<kw name="Get Request" library="RequestsLibrary">
+<doc>Send a GET request on the session object found using the</doc>
+<arguments>
+<arg>API</arg>
+<arg>${URI}</arg>
+<arg>params=username=tom</arg>
+</arguments>
+<assign>
+<var>${response}</var>
+</assign>
+<msg timestamp="20180725 15:12:14.445" level="INFO">Get Request using : alias=API, uri=/jacocotest/userServlet, headers=None json=None</msg>
+<msg timestamp="20180725 15:12:14.445" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" endtime="20180725 15:12:14.445" starttime="20180725 15:12:14.440"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${response.text}</arg>
+<arg>opertype is null</arg>
+</arguments>
+<status status="PASS" endtime="20180725 15:12:14.447" starttime="20180725 15:12:14.446"></status>
+</kw>
+<status status="PASS" endtime="20180725 15:12:14.447" critical="yes" starttime="20180725 15:12:14.436"></status>
+</test>
+<test id="s1-s2-t3" name="003_请求opertype不识别_查询失败">
+<kw name="Create Session" library="RequestsLibrary">
+<doc>Create Session: create a HTTP session to a server</doc>
+<arguments>
+<arg>API</arg>
+<arg>${URL}</arg>
+</arguments>
+<msg timestamp="20180725 15:12:14.450" level="INFO">Creating Session using : alias=API, url=http://10.148.138.140:8080, headers={},                     cookies=None, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" endtime="20180725 15:12:14.451" starttime="20180725 15:12:14.449"></status>
+</kw>
+<kw name="Get Request" library="RequestsLibrary">
+<doc>Send a GET request on the session object found using the</doc>
+<arguments>
+<arg>API</arg>
+<arg>${URI}</arg>
+<arg>params=opertype=test</arg>
+</arguments>
+<assign>
+<var>${response}</var>
+</assign>
+<msg timestamp="20180725 15:12:14.455" level="INFO">Get Request using : alias=API, uri=/jacocotest/userServlet, headers=None json=None</msg>
+<msg timestamp="20180725 15:12:14.456" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" endtime="20180725 15:12:14.456" starttime="20180725 15:12:14.451"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${response.text}</arg>
+<arg>opertype unrecognized</arg>
+</arguments>
+<status status="PASS" endtime="20180725 15:12:14.457" starttime="20180725 15:12:14.456"></status>
+</kw>
+<status status="PASS" endtime="20180725 15:12:14.458" critical="yes" starttime="20180725 15:12:14.447"></status>
+</test>
+<status status="PASS" endtime="20180725 15:12:14.459" starttime="20180725 15:12:14.418"></status>
+</suite>
+<suite source="/home/auto/project/jacoco-java-demo-test/TestCases/03_修改用户.robot" id="s1-s3" name="03 修改用户">
+<test id="s1-s3-t1" name="001_修改存在的用户_成功">
+<kw name="Create Session" library="RequestsLibrary">
+<doc>Create Session: create a HTTP session to a server</doc>
+<arguments>
+<arg>API</arg>
+<arg>${URL}</arg>
+</arguments>
+<msg timestamp="20180725 15:12:14.471" level="INFO">Creating Session using : alias=API, url=http://10.148.138.140:8080, headers={},                     cookies=None, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" endtime="20180725 15:12:14.472" starttime="20180725 15:12:14.470"></status>
+</kw>
+<kw name="Get Request" library="RequestsLibrary">
+<doc>Send a GET request on the session object found using the</doc>
+<arguments>
+<arg>API</arg>
+<arg>${URI}</arg>
+<arg>params=opertype=add&amp;username=tom&amp;password=123</arg>
+</arguments>
+<assign>
+<var>${response}</var>
+</assign>
+<msg timestamp="20180725 15:12:14.477" level="INFO">Get Request using : alias=API, uri=/jacocotest/userServlet, headers=None json=None</msg>
+<msg timestamp="20180725 15:12:14.478" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" endtime="20180725 15:12:14.478" starttime="20180725 15:12:14.472"></status>
+</kw>
+<kw name="Get Request" library="RequestsLibrary">
+<doc>Send a GET request on the session object found using the</doc>
+<arguments>
+<arg>API</arg>
+<arg>${URI}</arg>
+<arg>params=opertype=mod&amp;username=tom&amp;password=456</arg>
+</arguments>
+<assign>
+<var>${response}</var>
+</assign>
+<msg timestamp="20180725 15:12:14.483" level="INFO">Get Request using : alias=API, uri=/jacocotest/userServlet, headers=None json=None</msg>
+<msg timestamp="20180725 15:12:14.483" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" endtime="20180725 15:12:14.483" starttime="20180725 15:12:14.478"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${response.text}</arg>
+<arg>modify success</arg>
+</arguments>
+<status status="PASS" endtime="20180725 15:12:14.485" starttime="20180725 15:12:14.484"></status>
+</kw>
+<status status="PASS" endtime="20180725 15:12:14.485" critical="yes" starttime="20180725 15:12:14.468"></status>
+</test>
+<test id="s1-s3-t2" name="002_修改不存在的用户_失败">
+<kw name="Create Session" library="RequestsLibrary">
+<doc>Create Session: create a HTTP session to a server</doc>
+<arguments>
+<arg>API</arg>
+<arg>${URL}</arg>
+</arguments>
+<msg timestamp="20180725 15:12:14.488" level="INFO">Creating Session using : alias=API, url=http://10.148.138.140:8080, headers={},                     cookies=None, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" endtime="20180725 15:12:14.489" starttime="20180725 15:12:14.488"></status>
+</kw>
+<kw name="Get Request" library="RequestsLibrary">
+<doc>Send a GET request on the session object found using the</doc>
+<arguments>
+<arg>API</arg>
+<arg>${URI}</arg>
+<arg>params=opertype=mod&amp;username=test&amp;password=123</arg>
+</arguments>
+<assign>
+<var>${response}</var>
+</assign>
+<msg timestamp="20180725 15:12:14.494" level="INFO">Get Request using : alias=API, uri=/jacocotest/userServlet, headers=None json=None</msg>
+<msg timestamp="20180725 15:12:14.494" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" endtime="20180725 15:12:14.494" starttime="20180725 15:12:14.489"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${response.text}</arg>
+<arg>user not exist</arg>
+</arguments>
+<status status="PASS" endtime="20180725 15:12:14.495" starttime="20180725 15:12:14.495"></status>
+</kw>
+<status status="PASS" endtime="20180725 15:12:14.496" critical="yes" starttime="20180725 15:12:14.486"></status>
+</test>
+<test id="s1-s3-t3" name="003_请求不带用户名或密码_修改失败">
+<kw name="Create Session" library="RequestsLibrary">
+<doc>Create Session: create a HTTP session to a server</doc>
+<arguments>
+<arg>API</arg>
+<arg>${URL}</arg>
+</arguments>
+<msg timestamp="20180725 15:12:14.499" level="INFO">Creating Session using : alias=API, url=http://10.148.138.140:8080, headers={},                     cookies=None, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" endtime="20180725 15:12:14.500" starttime="20180725 15:12:14.499"></status>
+</kw>
+<kw name="Get Request" library="RequestsLibrary">
+<doc>Send a GET request on the session object found using the</doc>
+<arguments>
+<arg>API</arg>
+<arg>${URI}</arg>
+<arg>params=opertype=mod</arg>
+</arguments>
+<assign>
+<var>${response}</var>
+</assign>
+<msg timestamp="20180725 15:12:14.504" level="INFO">Get Request using : alias=API, uri=/jacocotest/userServlet, headers=None json=None</msg>
+<msg timestamp="20180725 15:12:14.505" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" endtime="20180725 15:12:14.505" starttime="20180725 15:12:14.500"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${response.text}</arg>
+<arg>username or password is null</arg>
+</arguments>
+<status status="PASS" endtime="20180725 15:12:14.506" starttime="20180725 15:12:14.505"></status>
+</kw>
+<status status="PASS" endtime="20180725 15:12:14.506" critical="yes" starttime="20180725 15:12:14.496"></status>
+</test>
+<status status="PASS" endtime="20180725 15:12:14.507" starttime="20180725 15:12:14.461"></status>
+</suite>
+<suite source="/home/auto/project/jacoco-java-demo-test/TestCases/04_删除用户.robot" id="s1-s4" name="04 删除用户">
+<test id="s1-s4-t1" name="001_删除全部用户">
+<kw name="Create Session" library="RequestsLibrary">
+<doc>Create Session: create a HTTP session to a server</doc>
+<arguments>
+<arg>API</arg>
+<arg>${URL}</arg>
+</arguments>
+<msg timestamp="20180725 15:12:14.516" level="INFO">Creating Session using : alias=API, url=http://10.148.138.140:8080, headers={},                     cookies=None, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" endtime="20180725 15:12:14.516" starttime="20180725 15:12:14.515"></status>
+</kw>
+<kw name="Get Request" library="RequestsLibrary">
+<doc>Send a GET request on the session object found using the</doc>
+<arguments>
+<arg>API</arg>
+<arg>${URI}</arg>
+<arg>params=opertype=del</arg>
+</arguments>
+<assign>
+<var>${response}</var>
+</assign>
+<msg timestamp="20180725 15:12:14.520" level="INFO">Get Request using : alias=API, uri=/jacocotest/userServlet, headers=None json=None</msg>
+<msg timestamp="20180725 15:12:14.521" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" endtime="20180725 15:12:14.521" starttime="20180725 15:12:14.517"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${response.text}</arg>
+<arg>delete all users success</arg>
+</arguments>
+<status status="PASS" endtime="20180725 15:12:14.522" starttime="20180725 15:12:14.521"></status>
+</kw>
+<status status="PASS" endtime="20180725 15:12:14.522" critical="yes" starttime="20180725 15:12:14.514"></status>
+</test>
+<test id="s1-s4-t2" name="002_删除不存在的用户">
+<kw name="Create Session" library="RequestsLibrary">
+<doc>Create Session: create a HTTP session to a server</doc>
+<arguments>
+<arg>API</arg>
+<arg>${URL}</arg>
+</arguments>
+<msg timestamp="20180725 15:12:14.525" level="INFO">Creating Session using : alias=API, url=http://10.148.138.140:8080, headers={},                     cookies=None, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" endtime="20180725 15:12:14.525" starttime="20180725 15:12:14.524"></status>
+</kw>
+<kw name="Get Request" library="RequestsLibrary">
+<doc>Send a GET request on the session object found using the</doc>
+<arguments>
+<arg>API</arg>
+<arg>${URI}</arg>
+<arg>params=opertype=del&amp;username=test</arg>
+</arguments>
+<assign>
+<var>${response}</var>
+</assign>
+<msg timestamp="20180725 15:12:14.529" level="INFO">Get Request using : alias=API, uri=/jacocotest/userServlet, headers=None json=None</msg>
+<msg timestamp="20180725 15:12:14.529" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" endtime="20180725 15:12:14.529" starttime="20180725 15:12:14.526"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${response.text}</arg>
+<arg>user not exist</arg>
+</arguments>
+<status status="PASS" endtime="20180725 15:12:14.530" starttime="20180725 15:12:14.529"></status>
+</kw>
+<status status="PASS" endtime="20180725 15:12:14.530" critical="yes" starttime="20180725 15:12:14.522"></status>
+</test>
+<test id="s1-s4-t3" name="003_删除单个用户">
+<kw name="Create Session" library="RequestsLibrary">
+<doc>Create Session: create a HTTP session to a server</doc>
+<arguments>
+<arg>API</arg>
+<arg>${URL}</arg>
+</arguments>
+<msg timestamp="20180725 15:12:14.533" level="INFO">Creating Session using : alias=API, url=http://10.148.138.140:8080, headers={},                     cookies=None, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" endtime="20180725 15:12:14.534" starttime="20180725 15:12:14.532"></status>
+</kw>
+<kw name="Get Request" library="RequestsLibrary">
+<doc>Send a GET request on the session object found using the</doc>
+<arguments>
+<arg>API</arg>
+<arg>${URI}</arg>
+<arg>params=opertype=add&amp;username=tom&amp;password=123</arg>
+</arguments>
+<assign>
+<var>${response}</var>
+</assign>
+<msg timestamp="20180725 15:12:14.537" level="INFO">Get Request using : alias=API, uri=/jacocotest/userServlet, headers=None json=None</msg>
+<msg timestamp="20180725 15:12:14.537" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" endtime="20180725 15:12:14.538" starttime="20180725 15:12:14.534"></status>
+</kw>
+<kw name="Get Request" library="RequestsLibrary">
+<doc>Send a GET request on the session object found using the</doc>
+<arguments>
+<arg>API</arg>
+<arg>${URI}</arg>
+<arg>params=opertype=del&amp;username=tom</arg>
+</arguments>
+<assign>
+<var>${response}</var>
+</assign>
+<msg timestamp="20180725 15:12:14.542" level="INFO">Get Request using : alias=API, uri=/jacocotest/userServlet, headers=None json=None</msg>
+<msg timestamp="20180725 15:12:14.542" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" endtime="20180725 15:12:14.542" starttime="20180725 15:12:14.538"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${response.text}</arg>
+<arg>delete success</arg>
+</arguments>
+<status status="PASS" endtime="20180725 15:12:14.543" starttime="20180725 15:12:14.543"></status>
+</kw>
+<status status="PASS" endtime="20180725 15:12:14.544" critical="yes" starttime="20180725 15:12:14.531"></status>
+</test>
+<status status="PASS" endtime="20180725 15:12:14.544" starttime="20180725 15:12:14.509"></status>
+</suite>
+<status status="PASS" endtime="20180725 15:12:14.546" starttime="20180725 15:12:14.254"></status>
+</suite>
+<statistics>
+<total>
+<stat fail="0" pass="12">Critical Tests</stat>
+<stat fail="0" pass="12">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat fail="0" id="s1" name="TestCases" pass="12">TestCases</stat>
+<stat fail="0" id="s1-s1" name="01 新增用户" pass="3">TestCases.01 新增用户</stat>
+<stat fail="0" id="s1-s2" name="02 查询用户" pass="3">TestCases.02 查询用户</stat>
+<stat fail="0" id="s1-s3" name="03 修改用户" pass="3">TestCases.03 修改用户</stat>
+<stat fail="0" id="s1-s4" name="04 删除用户" pass="3">TestCases.04 删除用户</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
