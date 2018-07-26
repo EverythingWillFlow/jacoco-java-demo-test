@@ -1,4 +1,4 @@
 *** Variables ***
-${URL}            http://172.29.65.34:8080
+${URL}            http://10.148.138.140:18080
 ${UserURI}        /jacocotest/userServlet
 ${ZooURI}         /jacocotest/zooServlet
